@@ -29,7 +29,7 @@ class WebHandler extends BaseHandler
                         preg_replace(
                             '#</?script( type="text/javascript")?>#',
                             '',
-                            $this->getAgent()->getBrowserTimingFooter()
+                            $this->getAgent()->getBrowserTimingFooter() . ';'
                         ),
                         View::POS_END,
                         'newrelic-end'
