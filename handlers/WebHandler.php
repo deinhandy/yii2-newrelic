@@ -42,6 +42,9 @@ class WebHandler extends BaseHandler
             Application::EVENT_AFTER_ACTION,
             function () use ($app) {
                 foreach ($app->controller->actionParams as $key => $value) {
+					if (is_object($value)) {
+						$value = 'Object of class ' . get_class($value);
+					}
                     $this->getAgent()->addCustomParameter($key, var_export($value, true));
                 }
             }
